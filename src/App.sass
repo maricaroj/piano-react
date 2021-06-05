@@ -1,20 +1,28 @@
 body
-    background-color: #333
+    background-image: url('./img/fondo-piano.jpg')
+    background-size: cover
 
 .titulo
-    height: 250px
+    height: 300px
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
     color: white
+    font-family: 'Kaushan Script', cursive
+    h1
+        font-size: 3rem
 
 .container
     display: flex
     margin: 30px auto
     justify-content: center
-
-
+    width: 55%
+    height: 50vh
+    padding: 15px 10px 
+    background-color: #0e0d0d
+    border-radius: 10px
+    box-shadow: 5px 1px 4px 1px #ffffff5e
 
 .nota
     background-color: white
@@ -22,21 +30,37 @@ body
     border-radius: 5px
     height: 400px
     width: 100px
-    position: relative
+    box-shadow: 5px 1px 4px 1px #ffffff5e
+
+.container-negras
+    display: flex
+    position: absolute
+    margin-top: 5px
+    left: 480px
 
 .negra
     background-color: black
     height: 250px
     width: 50px
+    margin-right: 57px
     border-radius: 10px
-    position: absolute
-    right: -30px
+    position: relative
     z-index: 1
+    box-shadow: 5px 1px 4px 1px #2e2d2d5e
+
+
+#Fa-sostenido
+    margin-left: 120px
+
 
 .esta-sonando
     height: 50px
 
 .sonando
-    background-color: #999
-    transition: 1s
+    background-color: #c47ac4
+    transition: .5s
+    
+.sonando2
+    background-color: #1d1c1c
+    transition: .5s
 

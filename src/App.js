@@ -2,6 +2,7 @@ import {useState} from 'react';
 import "./App.sass";
 
 function App() {
+
   const notas = [
     {
       nombre: "Do",
@@ -36,6 +37,33 @@ function App() {
       nombre: "Si",
       link: require("./notes/si.wav"),
     },
+    {
+      nombre: "Do-Octava",
+      link: require("./notes/do-octave.wav")
+    }
+  ];
+
+  const sostenidas = [
+    {
+      nombre:"Do-sostenido",
+      link: require("./sostenidos/do-sost.wav")
+    },
+    {
+      nombre:"Re-sostenido",
+      link: require("./sostenidos/re-sost.wav")
+    },
+    {
+      nombre:"Fa-sostenido",
+      link: require("./sostenidos/fa-sost.wav")
+    },
+    {
+      nombre:"Sol-sostenido",
+      link: require("./sostenidos/sol-sost.wav")
+    },
+    {
+      nombre:"La-sostenido",
+      link: require("./sostenidos/la-sost.wav")
+    }
   ];
 
   const handlerClickNote = (nota) => {
@@ -44,16 +72,17 @@ function App() {
     sonido.play();
   };
 
-  // const [click, setClick] = useState(0);
-  const [sonando, setSonando] = useState('');
+  const handlerClickSost = (sostenida) => {
+      setSonando(sostenida.nombre)
+      const sonido = new Audio(sostenida.link.default);
+      sonido.play();
+  };
 
-  // const handlerClickCount = () => {
-  //   setClick(click + 1);
-  // };
+  const [sonando, setSonando] = useState('');
 
   setTimeout(() => {
     setSonando('');
-  },300)
+  },350)
 
   return (
     <div>
@@ -61,15 +90,19 @@ function App() {
         <h1>Piano con React</h1>
         <h2>Hecho por Mariana</h2>
         <h3 className="esta-sonando">{sonando}</h3>
-        {/* <button onClick={handlerClickCount}>Has dado {click} clicks</button> */}
       </div>
       <div className="container">
         {notas.map((nota) => (
           <div key={nota.nombre} className={`nota ${sonando === nota.nombre && 'sonando'}`} onClick={() => handlerClickNote(nota)}>
-            {nota.sostenido && <div className="negra"></div>}
+            {/* {nota.sostenido && <div className="negra" onClick={() => handlerClickSost(sostenidas)}></div>} */}
             {/* {nota.sostenido ? <div className="negra"></div> : null} */}
           </div>
         ))}
+        <div className="container-negras">
+        {sostenidas.map(sostenida => (
+          <div key={sostenida.nombre} id={sostenida.nombre} className={`negra ${sonando === sostenida.nombre && 'sonando2'}`} onClick={() => handlerClickSost(sostenida)}></div>
+        ))}
+        </div>
       </div>
     </div>
   );
